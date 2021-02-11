@@ -61,3 +61,4 @@ fabric.properties
 # Docker Compose
 .env
 .idea/
+/vendor/

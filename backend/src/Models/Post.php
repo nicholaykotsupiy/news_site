@@ -19,13 +19,13 @@ class Post
 
         return array_map(function($postDb){
             $post = new self;
-            // $post->setId($postDb['id']);
+            $post->setId($postDb['id']);
             $post->setTitle($postDb['title']);
-            // $post->setAuthor($postDb['author']);
-            // $post->setStatus($postDb['status']);
-            // $post->setCategory($postDb['category']);
-            // $post->setImg($postDb['img']);
-            // $post->setContent($postDb['content']);
+            $post->setAuthor($postDb['author']);
+            $post->setStatus($postDb['status']);
+            $post->setCategory($postDb['category']);
+            $post->setImg($postDb['img']);
+            $post->setContent($postDb['content']);
             return $post;
         }, $posts);
     }

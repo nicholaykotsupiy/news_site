@@ -2,6 +2,8 @@
 
 namespace It20Academy\App\Models;
 
+use It20Academy\App\Core\Db;
+
 class Post
 {
     private $id;
@@ -14,20 +16,23 @@ class Post
 
     public static function all(): array
     {
-        $db = require_once(str_replace('src/Models', '', __DIR__) . 'storage/db.php');
-        $posts = isset($db['posts']) ? $db['posts'] : [];
+        // $db = require_once(str_replace('src/Models', '', __DIR__) . 'storage/db.php');
+        // $posts = isset($db['posts']) ? $db['posts'] : [];
+        $dbh = (new Db())->getHandler();
+        $statement = $dbh->query('select * from posts');
+        $initialPosts = $statement->fetchAll();
 
-        return array_map(function($postDb){
+        return array_map(function($currentPost){
             $post = new self;
-            $post->setId($postDb['id']);
-            $post->setTitle($postDb['title']);
-            $post->setAuthor($postDb['author']);
-            $post->setStatus($postDb['status']);
-            $post->setCategory($postDb['category']);
-            $post->setImg($postDb['img']);
-            $post->setContent($postDb['content']);
+            $post->setId($currentPost['id']);
+            $post->setTitle($currentPost['title']);
+            $post->setAuthor($currentPost['author_id']);
+            $post->setStatus($currentPost['status_id']);
+            $post->setCategory($currentPost['category_id']);
+            $post->setImg($currentPost['img']);
+            $post->setContent($currentPost['content']);
             return $post;
-        }, $posts);
+        }, $initialPosts);
     }
 
     public function setId($id)

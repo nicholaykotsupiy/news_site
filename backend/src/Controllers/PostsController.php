@@ -3,6 +3,7 @@
 namespace It20Academy\App\Controllers;
 
 use It20Academy\App\Models\Post;
+use It20Academy\App\Core\View;
 
 class PostsController
 {
@@ -10,6 +11,6 @@ class PostsController
     {
         $posts = Post::all();
 
-        dump($posts);
+        echo View::render('posts-index', compact('posts'));
     }
 }

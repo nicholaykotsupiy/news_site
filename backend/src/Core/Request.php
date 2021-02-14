@@ -7,10 +7,6 @@ class Request
     private $controller = 'IndexController';
 
     private $method = 'index';
-    
-    private $controllerPath = 'It20Academy\App\Controllers\\EmptyController';
-
-    
 
     public function __construct()
     {
@@ -21,7 +17,6 @@ class Request
         // controller
         if (isset($uri[1])) {
             $this->controller = ucfirst($uri[1]); // Posts
-            $this->$controllerPath = 'It20Academy\App\Controllers\\' . $this->controller . 'Controller'; //Path
         }
 
         // method
@@ -33,14 +28,14 @@ class Request
     public function validateCommand(): bool
     {
         // controller
-        if (! class_exists($this->$controllerPath)) {
-            dump("{$this->$controllerPath} does not exists!");
+        if (! class_exists($this->getController())) {
+            dump($this->getController() . "does not exists!");
 
             return false;
         }
 
         // method
-        if (! method_exists($this->$controllerPath, $this->method)) {
+        if (! method_exists($this->getController(), $this->method)) {
             dump("Method {$this->method} does not exists!");
 
             return false;
@@ -51,7 +46,7 @@ class Request
 
     public function getController(): string
     {
-        return $this->$controllerPath;
+        return "It20Academy\App\Controllers\\{$this->controller}Controller";
     }
 
     public function getMethod(): string

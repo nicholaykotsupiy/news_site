@@ -2,7 +2,9 @@
 
 /** @var array $data */
 $posts = $data['posts'];
-
+$authors = $data['authors'];
+$statuses = $data['statuses'];
+$categories = $data['categories'];
 ?>
 <!doctype html>
 <html lang="en">

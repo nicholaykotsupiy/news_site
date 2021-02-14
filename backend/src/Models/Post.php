@@ -16,8 +16,6 @@ class Post
 
     public static function all(): array
     {
-        // $db = require_once(str_replace('src/Models', '', __DIR__) . 'storage/db.php');
-        // $posts = isset($db['posts']) ? $db['posts'] : [];
         $dbh = (new Db())->getHandler();
         $statement = $dbh->query('select * from posts');
         $initialPosts = $statement->fetchAll();

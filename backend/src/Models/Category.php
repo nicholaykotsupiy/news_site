@@ -18,7 +18,7 @@ class Category
         return array_map(function($currentCategory){
             $category = new self;
             $category->setId($currentCategory['id']);
-            $category->setName($currentCategory['name']);
+            $category->setCategoryName($currentCategory['name']);
             return $category;
         }, $initialCategory);
     }
@@ -29,15 +29,15 @@ class Category
     }
     public function getId(): int
     {
-        return $this->$id;
+        return $this->id;
     }
 
-    public function setName($name)
+    public function setCategoryName($name)
     {
         $this->name = $name;
     }
-    public function getName(): string
+    public function getCategoryName(): string
     {
-        return $this->$name;
+        return $this->name;
     }
 }

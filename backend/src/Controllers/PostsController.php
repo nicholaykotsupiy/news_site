@@ -12,7 +12,7 @@ class PostsController
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::filteredPost();
         $authors = Author::authorCreate();
         $statuses = Status::statusCreate();
         $categories = Category::categoryCreate();

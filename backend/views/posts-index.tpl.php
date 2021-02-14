@@ -72,17 +72,44 @@ $categories = $data['categories'];
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <?php foreach ($posts as $post): ?>
                 <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="<?php echo $post->getImg(); ?>" class="bd-placeholder-img card-img-top" width="100%" height="225">
-
+                    <div class="card shadow-sm" style=" height: 600px;">
+                        <img src="<?php echo $post->getImg(); ?>" style=" height: 300px;">
                         <div class="card-body">
-                            <p class="card-text"><?php echo $post->getContent(); ?></p>
+                        <?php
+                            $title = $post->getTitle();
+                        ?>
+                            <h4>
+                                <a href="<?php echo('http://localhost:80/' . $post->slag($title) . '.com')?>">
+                                    <?php
+                                        $title = $post->getTitle(); 
+                                        echo $title; 
+                                    ?>
+                                </a>
+                            </h4>
+                            <p class="card-text">
+                                <?php 
+                                    echo $post->getTruncateContent();
+                                ?>
+                            </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <?php 
+                                        $status = $statuses[$post->getStatus() - 1];
+                                        echo $status->getStatusName();
+                                    ?>
                                 </div>
-                                <small class="text-muted">9 mins</small>
+                                <small class="text-muted">
+                                    <?php
+                                        $category = $categories[$post->getCategory() - 1];
+                                        echo $category->getCategoryName();
+                                    ?>
+                                </small>
+                                <span>
+                                    <?php
+                                        $author = $authors[$post->getAuthor() - 1];
+                                        echo $author->getShortName();
+                                    ?>
+                                </span>
                             </div>
                         </div>
                     </div>

@@ -18,7 +18,7 @@ class Status
         return array_map(function($currentStatus){
             $status = new self;
             $status->setId($currentStatus['id']);
-            $status->setName($currentStatus['name']);
+            $status->setStatusName($currentStatus['name']);
             return $status;
         }, $initialStatus);
     }
@@ -29,15 +29,15 @@ class Status
     }
     public function getId(): int
     {
-        return $this->$id;
+        return $this->id;
     }
 
-    public function setName($name)
+    public function setStatusName($name)
     {
         $this->name = $name;
     }
-    public function getName(): string
+    public function getStatusName(): string
     {
-        return $this->$name;
+        return $this->name;
     }
 }

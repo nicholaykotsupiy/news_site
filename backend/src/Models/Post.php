@@ -29,8 +29,44 @@ class Post
             $post->setCategory($currentPost['category_id']);
             $post->setImg($currentPost['img']);
             $post->setContent($currentPost['content']);
+
             return $post;
         }, $initialPosts);
+    }
+
+    public static function filteredPost()
+    {
+        $posts = self::all();
+
+        return array_filter($posts, function($post){
+            if(($post->getStatus()-1) === 0){
+                return $post;
+            }
+        });
+    }
+    
+    private function translit($value)
+    {
+        $converter = array(
+            'а' => 'a',    'б' => 'b',    'в' => 'v',    'г' => 'g',    'д' => 'd',
+            'е' => 'e',    'ё' => 'e',    'ж' => 'zh',   'з' => 'z',    'и' => 'i',
+            'й' => 'y',    'к' => 'k',    'л' => 'l',    'м' => 'm',    'н' => 'n',
+            'о' => 'o',    'п' => 'p',    'р' => 'r',    'с' => 's',    'т' => 't',
+            'у' => 'u',    'ф' => 'f',    'х' => 'h',    'ц' => 'c',    'ч' => 'ch',
+            'ш' => 'sh',   'щ' => 'sch',  'ь' => '',     'ы' => 'y',    'ъ' => '',
+            'э' => 'e',    'ю' => 'yu',   'я' => 'ya',
+
+            'А' => 'A',    'Б' => 'B',    'В' => 'V',    'Г' => 'G',    'Д' => 'D',
+            'Е' => 'E',    'Ё' => 'E',    'Ж' => 'Zh',   'З' => 'Z',    'И' => 'I',
+            'Й' => 'Y',    'К' => 'K',    'Л' => 'L',    'М' => 'M',    'Н' => 'N',
+            'О' => 'O',    'П' => 'P',    'Р' => 'R',    'С' => 'S',    'Т' => 'T',
+            'У' => 'U',    'Ф' => 'F',    'Х' => 'H',    'Ц' => 'C',    'Ч' => 'Ch',
+            'Ш' => 'Sh',   'Щ' => 'Sch',  'Ь' => '',     'Ы' => 'Y',    'Ъ' => '',
+            'Э' => 'E',    'Ю' => 'Yu',   'Я' => 'Ya',
+        );
+
+        $value = strtr($value, $converter);
+        return $value;
     }
 
     public function setId($id)
@@ -49,6 +85,10 @@ class Post
     public function getTitle(): string
     {
         return $this->title;
+    }
+    public function slag(string $str): string
+    {
+        return str_replace(' ', '_', strtolower(self::translit($str)));
     }
 
     public function setAuthor($author)
@@ -94,5 +134,15 @@ class Post
     public function getContent(): string
     {
         return $this->content;
+    }
+    public function getTruncateContent(int $maxsymbol = 200): string
+    {
+        $str = self::getContent();
+        
+        if (strlen($str) > $maxsymbol) {
+            return mb_substr($str, 0, $maxsymbol - 3) . '...';
+        } else {
+            return $str;
+        }
     }
 }

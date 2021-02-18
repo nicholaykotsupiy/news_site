@@ -1,23 +1,16 @@
 <?php
 
-namespace It20Academy\App\Core;
+namespace Sakura\App\Core;
+
+use Sakura\App\Controller\AuthController;
 
 class App
 {
-    public function run()
+    public function run (): void
     {
         $request = new Request();
-
-        if (! $request->validateCommand()) {
-            dump('Invalid data');
-
-            return false;
-        }
-
-        $controllerName = $request->getController();
-        $method = $request->getMethod();
-
-        $controller = new $controllerName; // It20Academy\App\Controllers\PostsController
-        $controller->$method();
+        // dump((new Config)->getConfig('db'));
+        $route = $request->getRoute();
+        $auth = (new AuthController())->index($route);
     }
 }

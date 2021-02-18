@@ -1,24 +1,18 @@
 <?php
 
-namespace It20Academy\App\Core;
+namespace Sakura\App\Core;
 
 class Config
 {
-    private array $config;
+    private $config;
 
     public function __construct()
     {
-        $this->config = parse_ini_file(__DIR__ . '/../../config/config.ini');
+        $this->config = parse_ini_file(str_replace('src/Core', '', __DIR__) . 'config/config.ini');
     }
 
-    public function getConfig(string $name): array
+    public function getConfig ($name = 'db'): array
     {
-        if (! empty($name) && isset($this->config[$name])) {
-            return $this->config[$name];
-        } elseif (empty($name)) {
-            return $this->config;
-        }
-
-        return [];
+        return $this->config[$name];
     }
 }

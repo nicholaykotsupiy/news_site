@@ -1,8 +1,9 @@
 <?php
 
-require_once '../vendor/autoload.php';
+require_once('../vendor/autoload.php');
 
-use It20Academy\App\Core\App;
+use Sakura\App\Core\App;
 
-$app = new App();
-$app->run();
+$application = new App();
+
+$application->run();

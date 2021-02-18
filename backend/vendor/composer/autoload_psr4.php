@@ -8,6 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
-    'It20Academy\\App\\' => array($baseDir . '/src'),
+    'Sakura\\App\\' => array($baseDir . '/src'),
     'Dd\\' => array($vendorDir . '/wanfeiyy/dd/src/Dd'),
 );

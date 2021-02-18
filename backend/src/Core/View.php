@@ -1,15 +1,17 @@
 <?php
 
-namespace It20Academy\App\Core;
+namespace Sakura\App\Core;
 
 class View
 {
-    public static function render (string $view, array $data)
-    {
-        $viewPath = __DIR__ . "/../../views/{$view}.tpl.php";
+    public static function render ($view)
+    {  
+        $tplPath = str_replace('Core', '', __DIR__) . "/view/{$view}.tpl.php";
 
-        if(file_exists($viewPath)){
-            include $viewPath;
+        if(file_exists($tplPath))
+        {
+            include($tplPath);
         }
+        
     }
 }

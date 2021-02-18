@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf7d0a19932799d32c9e31209dc383edb
+class ComposerStaticInitcd6d84dc33b5a465d36979b831b3f8c8
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -17,10 +17,7 @@ class ComposerStaticInitf7d0a19932799d32c9e31209dc383edb
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
-        ),
-        'I' => 
-        array (
-            'It20Academy\\App\\' => 16,
+            'Sakura\\App\\' => 11,
         ),
         'D' => 
         array (
@@ -37,7 +34,7 @@ class ComposerStaticInitf7d0a19932799d32c9e31209dc383edb
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
-        'It20Academy\\App\\' => 
+        'Sakura\\App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -47,11 +44,16 @@ class ComposerStaticInitf7d0a19932799d32c9e31209dc383edb
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf7d0a19932799d32c9e31209dc383edb::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf7d0a19932799d32c9e31209dc383edb::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcd6d84dc33b5a465d36979b831b3f8c8::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcd6d84dc33b5a465d36979b831b3f8c8::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitcd6d84dc33b5a465d36979b831b3f8c8::$classMap;
 
         }, null, ClassLoader::class);
     }

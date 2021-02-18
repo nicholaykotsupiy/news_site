@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d42e09197496a9bc4a286b9b3375e11",
+    "content-hash": "fba804ee571da6b64fadda6d9f0f318e",
     "packages": [],
     "packages-dev": [
         {
@@ -68,6 +68,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.22.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -146,6 +149,9 @@
                 "debug",
                 "dump"
             ],
+            "support": {
+                "source": "https://github.com/symfony/var-dumper/tree/v3.4.47"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -199,6 +205,10 @@
                 }
             ],
             "description": "use laravel dd replace var_dump",
+            "support": {
+                "issues": "https://github.com/wanfeiyy/laravel-dd/issues",
+                "source": "https://github.com/wanfeiyy/laravel-dd/tree/v1.0.3"
+            },
             "time": "2016-12-30T02:32:44+00:00"
         }
     ],
@@ -209,5 +219,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
